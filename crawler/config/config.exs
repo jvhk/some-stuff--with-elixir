@@ -1,12 +1,9 @@
 use Mix.Config
 
 config :crawly,
-  middlewares: [
-    Crawly.Middlewares.DomainFilter,
-    Crawly.Middlewares.UniqueRequest,
-    Crawly.Middlewares.RobotsTxt
-  ],
+  closespider_timeout: 10,
+  concurrent_requests_per_domain: 8,
   pipelines: [
     Crawly.Pipelines.JSONEncoder,
-    {Crawly.Pipelines.WriteToFile, folder: "/tmp", extension: "csv"}
+    {Crawly.Pipelines.WriteToFile, extension: "jl", folder: "/tmp"}
   ]
